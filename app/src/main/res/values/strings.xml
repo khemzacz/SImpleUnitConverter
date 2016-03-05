@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">UnitConverterAlpha0.1</string>
+    <string name="action_settings">Settings</string>
+    <string name="dimensions_prompt">Choose a dimension</string>
+    <string name="reference_unit_prompt">Reference unit</string>
+    <string name="target_unit_prompt">Target unit</string>
+
+    <string-array name="dimensions">
+        <item>Distance</item>
+        <item>Temperature</item>
+        <item>Mass</item>
+    </string-array>
+
+    <string-array name="mass_units">
+        <item>Kilograms</item>
+        <item>Pounds</item>
+        <item>Ounces</item>
+    </string-array>
+
+    <string-array name="distance_units">
+        <item>Kilometers</item>
+        <item>Miles</item>
+        <item>Feet</item>
+    </string-array>
+
+    <string-array name="temperature_units">
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+        <item>Kelwin</item>
+    </string-array>
+
+</resources>

@@ -18,11 +18,11 @@ public class TemperatureConverter extends AbstractConverter{
         value = Double.parseDouble(val);
         if(a.equals(b)){
             if (a.equals("Celsius"))
-                unit = " °C";
+                unit = "°C";
             else if (a.equals("Fahrenheit"))
-                unit = " °F";
+                unit = "°F";
             else if (a.equals("Kelwin")){
-                unit = " K";
+                unit = "K";
             }
             result=value;
         }
@@ -35,26 +35,9 @@ public class TemperatureConverter extends AbstractConverter{
         else if(a.equals("Fahrenheit")){
             result = fahrenheit(b);
         }
-/*      else if(a.equals("Celsius")&& b.equals("Fahrenheit")){
-            result= CelsiusToFahrenheit(value);
-        }
-        else if(a.equals("Celsius")&& b.equals("Kelwin")){
-            result= CelsiusToKelwin(value);
-        }
-        else if(a.equals("Fahrenheit")&& b.equals("Celsius")){
-            result= FahrenheitToCelsius(value);
-        }
-        else if(a.equals("Fahrenheit")&& b.equals("Kelwin")){
-            result= FahrenheitToKelwin(value);
-        }
-        else if(a.equals("Kelwin")&& b.equals("Fahrenheit")){
-            result= KelwinToFahrenheit(value);
-        }
-        else if(a.equals("Kelwin")&& b.equals("Celsius")){
-            result= KelwinToCelsius(value);
-        }*/
+
         Double td = new BigDecimal(result).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
-        return (td.toString()+ unit);
+        return (td.toString()+"\n"+unit);
     }
 
     private double celsius(String b)
@@ -89,29 +72,29 @@ public class TemperatureConverter extends AbstractConverter{
     }
 
     private double celsiusToFahrenheit(){
-        unit = " °F";
+        unit = "°F";
         return (value*1.8+32);
     }
     private double celsiusToKelwin() {
-        unit = " K";
+        unit = "K";
         return (value+273.15);
     }
 
     private double fahrenheitToCelsius() {
-        unit = " °C";
+        unit = "°C";
         return ((value-32)/1.8);
     }
     private double fahrenheitToKelwin(){
-        unit = " K";
+        unit = "K";
         return ((value+459.67)/1.8);
     }
 
     private double kelwinToCelsius(){
-        unit = " °C";
+        unit = "°C";
         return (value-273.15);
     }
     private double kelwinToFahrenheit(){
-        unit = " °F";
+        unit = "°F";
         return (value*1.8-459.67);
     }
 }

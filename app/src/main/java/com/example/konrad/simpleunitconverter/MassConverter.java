@@ -17,29 +17,16 @@ public class MassConverter extends AbstractConverter {
         value = Double.parseDouble(val);
         if(a.equals(b)){
             if (a.equals("Kilograms")) {
-                unit = " kg";
+                unit = "kg";
             }
             else if (a.equals("Pounds")){
-                unit = " lb";
+                unit = "lb";
             }
             else if (a.equals("Ounces")){
-                unit = " oz";
+                unit = "oz";
             }
             result= value;
         }
-/*        else if(a.equals("Kilograms")&& b.equals("Pounds")){
-            result= kilogramsToPounds();
-        }
-        else if(a.equals("Kilograms")&& b.equals("Ounces"))
-            result=kilogramsToOunces();
-        else if(a.equals("Pounds")&& b.equals("Kilograms"))
-            result = poundsToKilograms();
-        else if(a.equals("Pounds")&& b.equals("Ounces"))
-            result = poundsToOunces();
-        else if(a.equals("Ounces")&& b.equals("Kilograms"))
-            result = ouncesToKilograms();
-        else if(a.equals("Ounces")&& b.equals("Pounds"))
-            result = ouncesToPounds(); */
         else if (a.equals("Kilograms")){
             result = kilograms(b);
         }
@@ -50,7 +37,7 @@ public class MassConverter extends AbstractConverter {
             result = ounces(b);
         }
         Double td = new BigDecimal(result).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
-        return (td.toString()+unit);
+        return (td.toString()+"\n"+unit);
     }
 
     private double kilograms(String b){
@@ -78,29 +65,29 @@ public class MassConverter extends AbstractConverter {
 
 
     private double kilogramsToPounds(){
-        unit = " lb";
+        unit = "lb";
         return (value*2.2046);
     }
     private double kilogramsToOunces(){
-        unit = " oz";
+        unit = "oz";
         return (value/0.02834952);
     }
 
     private double poundsToKilograms(){
-        unit = " kg";
+        unit = "kg";
         return (value/2.2046);
     }
     private double poundsToOunces(){
-        unit =" oz";
+        unit ="oz";
         return (value*16);
     }
 
     private double ouncesToKilograms(){
-        unit = " kg";
+        unit = "kg";
         return (value*0.02834952);
     }
     private double ouncesToPounds(){
-        unit = " lb";
+        unit = "lb";
         return (value/16);
     }
 }

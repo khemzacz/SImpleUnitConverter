@@ -52,13 +52,18 @@ public class MainActivity extends ActionBarActivity {
             String[] pom3 = getResources().getStringArray(R.array.temperature_units); // takes Strings from XML and puts into table
             ArrayList<String> l3 = new ArrayList<String>(Arrays.asList(pom3)); // makes array list out of table
             ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l3);
+            String[] pom4 = getResources().getStringArray(R.array.speed_units); // takes Strings from XML and puts into table
+            ArrayList<String> l4 = new ArrayList<String>(Arrays.asList(pom4)); // makes array list out of table
+            ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l4);
 
+
+            String chosenDimension = new String();
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String chosenDimension = new String();
                 adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 chosenDimension = spinner1.getSelectedItem().toString();
                 if (chosenDimension.equals("Mass")) {
                     spinner2.setAdapter(adapter1);
@@ -69,7 +74,11 @@ public class MainActivity extends ActionBarActivity {
                 } else if (chosenDimension.equals("Temperature")) {
                     spinner2.setAdapter(adapter3);
                     spinner3.setAdapter(adapter3);
+                } else if (chosenDimension.equals("Speed")) {
+                    spinner2.setAdapter(adapter4);
+                    spinner3.setAdapter(adapter4);
                 }
+
 
             }
 

@@ -7,6 +7,7 @@
 
     <string-array name="dimensions">
         <item>Distance</item>
+        <item>Speed</item>
         <item>Temperature</item>
         <item>Mass</item>
     </string-array>
@@ -15,6 +16,13 @@
         <item>Kilograms</item>
         <item>Pounds</item>
         <item>Ounces</item>
+    </string-array>
+
+    <string-array name="speed_units">
+        <item>km/h</item>
+        <item>m/s</item>
+        <item>mph</item>
+        <item>knots</item>
     </string-array>
 
     <string-array name="distance_units">

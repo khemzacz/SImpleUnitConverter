@@ -16,6 +16,8 @@ public class ConverterFactory {
             return new DistanceConverter();
         else if (type.equals("Mass"))
             return new MassConverter();
+        else if (type.equals("Speed"))
+            return new SpeedConverter();
 
         return null;
     }

@@ -1,15 +1,16 @@
 package com.example.konrad.simpleunitconverter;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Created by Konrad on 3/6/2016.
  */
 public class SpeedConverter extends AbstractConverter {
     public SpeedConverter(){
-
+        precision = 2;
     }
-
+    private int precision;
     private double result;
     private double value;
     private String unit;
@@ -43,8 +44,17 @@ public class SpeedConverter extends AbstractConverter {
         else if (a.equals("knots")){
             result = knots(b);
         }
-        Double td = new BigDecimal(result).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
-        return (td.toString()+"\n"+unit);
+        if (result <1)
+        {
+            BigDecimal bd = new BigDecimal(result);
+            int scale = precision - bd.precision() +bd.scale();
+            Double td = bd.setScale((scale), RoundingMode.HALF_UP).doubleValue();
+            return (td.toString()+" "+unit);
+        }
+        else {
+            Double td = new BigDecimal(result).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+            return (td.toString()+" "+unit);
+        }
     }
 
     private double kilometersPerHour(String b){

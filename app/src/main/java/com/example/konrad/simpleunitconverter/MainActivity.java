@@ -3,6 +3,8 @@ package com.example.konrad.simpleunitconverter;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,54 +15,45 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends ActionBarActivity {
-    private MainActivity this1= this;
+    final private MainActivity this1= this;
     private Spinner spinner1, spinner2, spinner3;
-    private EditText e1; private TextView r1;
+    private EditText e1;
+    private TextView r1;
     private String[] pom1, pom2, pom3, pom4;
-    private ArrayList<String> l1, l2, l3,l4;
-    ArrayAdapter<String> adapter1, adapter2,adapter3, adapter4;
+    private ArrayList<String> l1, l2, l3, l4;
+    private ArrayAdapter<String> adapter1, adapter2, adapter3, adapter4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        // super.onCreate(savedInstanceState);
       //  setContentView(R.layout.activity_main);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        spinner1 = (Spinner) findViewById(R.id.spinner); //Main spinner with dimension choice
-        spinner2 = (Spinner) findViewById(R.id.spinner2); //reference spinner
-        spinner3 = (Spinner) findViewById(R.id.spinner3); //target spinner
+        spinner1 = (Spinner) findViewById(R.id.spinner);
+        spinner2 =  (Spinner) findViewById(R.id.spinner2);
+        spinner3 = (Spinner) findViewById(R.id.spinner3);
         e1 = (EditText) findViewById(R.id.editText);
+        e1.addTextChangedListener(new MyTextWatcher(this));
         r1 = (TextView) findViewById(R.id.textView2);
         pom1 = getResources().getStringArray(R.array.mass_units); // takes Strings from XML and puts into table
-        l1 = new ArrayList<String>(Arrays.asList(pom1)); // makes array list out of table
-        adapter1 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l1);
         pom2 = getResources().getStringArray(R.array.distance_units);
-        l2 = new ArrayList<String>(Arrays.asList(pom2));
-        adapter2 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l2);
         pom3 = getResources().getStringArray(R.array.temperature_units);
-        l3 = new ArrayList<String>(Arrays.asList(pom3));
-        adapter3 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l3);
         pom4 = getResources().getStringArray(R.array.speed_units);
+        l1 = new ArrayList<String>(Arrays.asList(pom1));
+        l2 = new ArrayList<String>(Arrays.asList(pom2));
+        l3 = new ArrayList<String>(Arrays.asList(pom3));
         l4 = new ArrayList<String>(Arrays.asList(pom4));
+        adapter1 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l1);
+        adapter2 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l2);
+        adapter3 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l3);
         adapter4 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l4);
         addListenerOnSpinnerDimensionSelection();
-        e1.setOnKeyListener(new View.OnKeyListener() {
 
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    onButtonClick(v);
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -77,8 +70,8 @@ public class MainActivity extends ActionBarActivity {
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
-
             String chosenDimension = new String();
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -111,15 +104,16 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onButtonClick(View v) {
+        calculate();
+    }
+
+    public void calculate(){
 
         String txt0=spinner1.getSelectedItem().toString();
         String txt1=spinner2.getSelectedItem().toString();
         String txt2=spinner3.getSelectedItem().toString();
         try {
             String a = this.e1.getText().toString();
-            a.trim();
-            e1.setText(a);
-
             ConverterFactory cf1 = new ConverterFactory();
             AbstractConverter c1 = cf1.createConverter(txt0);
             String nt = c1.convert(a,txt1,txt2);
@@ -128,8 +122,6 @@ public class MainActivity extends ActionBarActivity {
         } catch(Exception io){
             r1.setText("Incorrect input");
         }
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE); // hiding
-        imm.hideSoftInputFromWindow(e1.getWindowToken(), 0); //                                         keyboard
     }
 
     @Override
@@ -148,5 +140,14 @@ public class MainActivity extends ActionBarActivity {
             System.exit(0);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public EditText getE1(){
+        return e1;
+    }
+    public void hideKeyBoard(){
+
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(e1.getWindowToken(), 0);
     }
 }

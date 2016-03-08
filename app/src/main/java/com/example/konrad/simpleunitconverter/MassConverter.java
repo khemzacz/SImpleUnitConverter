@@ -38,7 +38,7 @@ public class MassConverter extends AbstractConverter {
         else if (a.equals("Ounces")){
             result = ounces(b);
         }
-        if (result <1)
+        if (result <1 || result >10000000)
         {
             BigDecimal bd = new BigDecimal(result);
             int scale = precision - bd.precision() +bd.scale();

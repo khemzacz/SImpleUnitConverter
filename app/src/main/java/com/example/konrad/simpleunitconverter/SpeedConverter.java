@@ -44,7 +44,7 @@ public class SpeedConverter extends AbstractConverter {
         else if (a.equals("knots")){
             result = knots(b);
         }
-        if (result <1)
+        if (result <1 || result >10000000)
         {
             BigDecimal bd = new BigDecimal(result);
             int scale = precision - bd.precision() +bd.scale();

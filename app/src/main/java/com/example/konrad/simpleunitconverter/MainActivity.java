@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -38,7 +39,11 @@ public class MainActivity extends ActionBarActivity {
         spinner2 =  (Spinner) findViewById(R.id.spinner2);
         spinner3 = (Spinner) findViewById(R.id.spinner3);
         e1 = (EditText) findViewById(R.id.editText);
-        e1.addTextChangedListener(new MyTextWatcher(this));
+        if (e1.getInputType() == InputType.TYPE_CLASS_TEXT){
+            e1.addTextChangedListener(new MyTextWatcher(this));
+        } else if(e1.getInputType() == InputType.TYPE_CLASS_PHONE) {
+            e1.setOnEditorActionListener(new myOnEditorListener(this));
+        }
         r1 = (TextView) findViewById(R.id.textView2);
         pom1 = getResources().getStringArray(R.array.mass_units); // takes Strings from XML and puts into table
         pom2 = getResources().getStringArray(R.array.distance_units);

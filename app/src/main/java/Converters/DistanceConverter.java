@@ -1,4 +1,4 @@
-package com.example.konrad.simpleunitconverter;
+package Converters;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -7,8 +7,8 @@ import java.math.RoundingMode;
  * Created by Konrad on 3/5/2016.
  */
 public class DistanceConverter extends AbstractConverter {
-    public DistanceConverter(){
-        precision=2;
+    public DistanceConverter(int p){
+        precision=p;
     }
     private int precision;
     private double result;

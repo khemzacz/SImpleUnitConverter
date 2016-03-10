@@ -1,4 +1,4 @@
-package com.example.konrad.simpleunitconverter;
+package Converters;
 
 /**
  * Created by Konrad on 3/5/2016.

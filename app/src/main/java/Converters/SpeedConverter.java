@@ -1,4 +1,4 @@
-package com.example.konrad.simpleunitconverter;
+package Converters;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -7,8 +7,8 @@ import java.math.RoundingMode;
  * Created by Konrad on 3/6/2016.
  */
 public class SpeedConverter extends AbstractConverter {
-    public SpeedConverter(){
-        precision = 2;
+    public SpeedConverter(int p){
+        precision=p;
     }
     private int precision;
     private double result;

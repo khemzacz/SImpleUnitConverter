@@ -37,4 +37,16 @@
         <item>Kelwin</item>
     </string-array>
 
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string-array name="settingsList">
+        <item>Result precision</item>
+        <item>Keyboard</item>
+    </string-array>
+
+    <string-array name="keyboards">
+        <item>Phone style</item>
+        <item>Text style</item>
+    </string-array>
+
 </resources>

@@ -1,9 +1,11 @@
-package com.example.konrad.simpleunitconverter;
+package Listeners;
 
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.inputmethod.InputMethodManager;
+
+import com.example.konrad.simpleunitconverter.MainActivity;
 
 /**
  * Created by Konrad on 3/6/2016.

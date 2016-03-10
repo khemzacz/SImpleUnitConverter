@@ -1,4 +1,4 @@
-package com.example.konrad.simpleunitconverter;
+package Converters;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -7,8 +7,8 @@ import java.math.RoundingMode;
  * Created by Konrad on 3/5/2016.
  */
 public class MassConverter extends AbstractConverter {
-    public MassConverter(){
-        precision = 2;
+    public MassConverter(int p){
+        precision=p;
     }
 
     private int precision;

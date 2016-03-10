@@ -1,4 +1,4 @@
-package com.example.konrad.simpleunitconverter;
+package Converters;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -6,10 +6,10 @@ import java.math.RoundingMode;
 /**
  * Created by Konrad on 3/5/2016.
  */
-public class TemperatureConverter extends AbstractConverter{
+public class TemperatureConverter extends AbstractConverter {
 
-    public TemperatureConverter(){
-        precision =2;
+    public TemperatureConverter(int p){
+        precision=p;
     }
     private int precision;
     private double result;

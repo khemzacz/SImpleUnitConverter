@@ -1,15 +1,17 @@
-package com.example.konrad.simpleunitconverter;
+package Listeners;
 
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
+import com.example.konrad.simpleunitconverter.MainActivity;
+
 /**
  * Created by Konrad on 3/9/2016.
  */
-public class myOnEditorListener implements TextView.OnEditorActionListener{
+public class MyOnEditorListener implements TextView.OnEditorActionListener{
     private MainActivity m;
-    public myOnEditorListener(MainActivity m){
+    public MyOnEditorListener(MainActivity m){
         super();
         this.m=m;
     }

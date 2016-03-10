@@ -1,22 +1,24 @@
 package com.example.konrad.simpleunitconverter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import Converters.AbstractConverter;
+import Converters.ConverterFactory;
+import Listeners.MyMainSpinnerListener;
+import Listeners.MyTextWatcher;
+import Listeners.MyOnEditorListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +31,7 @@ public class MainActivity extends ActionBarActivity {
     private String[] pom1, pom2, pom3, pom4;
     private ArrayList<String> l1, l2, l3, l4;
     private ArrayAdapter<String> adapter1, adapter2, adapter3, adapter4;
+    private int precision;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        // super.onCreate(savedInstanceState);
@@ -42,8 +45,9 @@ public class MainActivity extends ActionBarActivity {
         if (e1.getInputType() == InputType.TYPE_CLASS_TEXT){
             e1.addTextChangedListener(new MyTextWatcher(this));
         } else if(e1.getInputType() == InputType.TYPE_CLASS_PHONE) {
-            e1.setOnEditorActionListener(new myOnEditorListener(this));
+            e1.setOnEditorActionListener(new MyOnEditorListener(this));
         }
+        precision=2;
         r1 = (TextView) findViewById(R.id.textView2);
         pom1 = getResources().getStringArray(R.array.mass_units); // takes Strings from XML and puts into table
         pom2 = getResources().getStringArray(R.array.distance_units);
@@ -66,46 +70,10 @@ public class MainActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-
-
     }
 
     public void addListenerOnSpinnerDimensionSelection() {
-
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-
-            String chosenDimension = new String();
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                chosenDimension = spinner1.getSelectedItem().toString();
-                if (chosenDimension.equals("Mass")) {
-                    spinner2.setAdapter(adapter1);
-                    spinner3.setAdapter(adapter1);
-                } else if (chosenDimension.equals("Distance")) {
-                    spinner2.setAdapter(adapter2);
-                    spinner3.setAdapter(adapter2);
-                } else if (chosenDimension.equals("Temperature")) {
-                    spinner2.setAdapter(adapter3);
-                    spinner3.setAdapter(adapter3);
-                } else if (chosenDimension.equals("Speed")) {
-                    spinner2.setAdapter(adapter4);
-                    spinner3.setAdapter(adapter4);
-                }
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        spinner1.setOnItemSelectedListener(new MyMainSpinnerListener(this1));
     }
 
     public void onButtonClick(View v) {
@@ -113,13 +81,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void calculate(){
-
+        //System.gc();
         String txt0=spinner1.getSelectedItem().toString();
         String txt1=spinner2.getSelectedItem().toString();
         String txt2=spinner3.getSelectedItem().toString();
         try {
             String a = this.e1.getText().toString();
-            ConverterFactory cf1 = new ConverterFactory();
+            ConverterFactory cf1 = new ConverterFactory(precision);
             AbstractConverter c1 = cf1.createConverter(txt0);
             String nt = c1.convert(a,txt1,txt2);
             r1.setText(nt);
@@ -138,6 +106,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent("com.example.konrad.simpleunitconverter.SettingsActivity");
+            startActivity(settingsIntent);
             return true;
         }
         if (id == R.id.action_exit) {
@@ -155,4 +125,25 @@ public class MainActivity extends ActionBarActivity {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(e1.getWindowToken(), 0);
     }
+    public void setPrecision(int p){
+        this1.precision = p;
+    }
+
+    public ArrayAdapter<String> getAdapter1(){return adapter1;}
+
+    public ArrayAdapter<String> getAdapter2() {
+        return adapter2;
+    }
+
+    public ArrayAdapter<String> getAdapter3() {
+        return adapter3;
+    }
+
+    public ArrayAdapter<String> getAdapter4() {
+        return adapter4;
+    }
+
+    public Spinner getSpinner1(){return spinner1;}
+    public Spinner getSpinner2(){return spinner2;}
+    public Spinner getSpinner3(){return spinner3;}
 }

@@ -125,6 +125,9 @@ public class MainActivity extends ActionBarActivity {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(e1.getWindowToken(), 0);
     }
+    public void setE1InputType(int inputType){
+        e1.setInputType(inputType);
+    }
     public void setPrecision(int p){
         this1.precision = p;
     }

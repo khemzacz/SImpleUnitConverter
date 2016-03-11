@@ -25,6 +25,7 @@ public class MyOnEditorListener implements TextView.OnEditorActionListener{
                 m.calculate();
                 m.hideKeyBoard();
                 return true;
+
             default:
                 break;
         }

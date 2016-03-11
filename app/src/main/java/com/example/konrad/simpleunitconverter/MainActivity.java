@@ -2,9 +2,11 @@ package com.example.konrad.simpleunitconverter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +27,11 @@ import java.util.Arrays;
 
 public class MainActivity extends ActionBarActivity {
     final private MainActivity this1= this;
+    private SharedPreferences sharedPreferences;
+    private Intent settingsIntent;
     private Spinner spinner1, spinner2, spinner3;
+    private MyTextWatcher watcher1;
+    private MyOnEditorListener oEL;
     private EditText e1;
     private TextView r1;
     private String[] pom1, pom2, pom3, pom4;
@@ -42,12 +48,9 @@ public class MainActivity extends ActionBarActivity {
         spinner2 =  (Spinner) findViewById(R.id.spinner2);
         spinner3 = (Spinner) findViewById(R.id.spinner3);
         e1 = (EditText) findViewById(R.id.editText);
-        if (e1.getInputType() == InputType.TYPE_CLASS_TEXT){
-            e1.addTextChangedListener(new MyTextWatcher(this));
-        } else if(e1.getInputType() == InputType.TYPE_CLASS_PHONE) {
-            e1.setOnEditorActionListener(new MyOnEditorListener(this));
-        }
-        precision=2;
+        oEL = new MyOnEditorListener(this);
+        loadSettings();
+        e1.setOnEditorActionListener(oEL);
         r1 = (TextView) findViewById(R.id.textView2);
         pom1 = getResources().getStringArray(R.array.mass_units); // takes Strings from XML and puts into table
         pom2 = getResources().getStringArray(R.array.distance_units);
@@ -63,6 +66,8 @@ public class MainActivity extends ActionBarActivity {
         adapter4 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l4);
         addListenerOnSpinnerDimensionSelection();
 
+
+
     }
 
     @Override
@@ -72,7 +77,30 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    public void addListenerOnSpinnerDimensionSelection() {
+    @Override
+    public void onResume(){
+        super.onResume();
+        loadSettings();
+    }
+
+
+    // loads settings from Shared preferences
+    private void loadSettings(){
+        sharedPreferences=getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        String keyboard = sharedPreferences.getString("keyboard","phone");
+
+        if (keyboard.equals("text")){
+            e1.setInputType(InputType.TYPE_CLASS_TEXT);
+        }
+        else if (keyboard.equals("phone")){
+            e1.setInputType(InputType.TYPE_CLASS_PHONE);
+        }
+
+        String pr = sharedPreferences.getString("precison","2");
+        precision = Integer.parseInt(pr);
+    }
+
+    private void addListenerOnSpinnerDimensionSelection() {
         spinner1.setOnItemSelectedListener(new MyMainSpinnerListener(this1));
     }
 
@@ -106,7 +134,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent settingsIntent = new Intent("com.example.konrad.simpleunitconverter.SettingsActivity");
+            settingsIntent = new Intent("com.example.konrad.simpleunitconverter.SettingsActivity");
             startActivity(settingsIntent);
             return true;
         }

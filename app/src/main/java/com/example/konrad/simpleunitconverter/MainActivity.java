@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
     private SharedPreferences sharedPreferences;
     private Intent settingsIntent;
     private Spinner spinner1, spinner2, spinner3;
-    private MyTextWatcher watcher1;
+    //private MyTextWatcher watcher1;
     private MyOnEditorListener oEL;
     private EditText e1;
     private TextView r1;
@@ -96,8 +96,7 @@ public class MainActivity extends ActionBarActivity {
             e1.setInputType(InputType.TYPE_CLASS_PHONE);
         }
 
-        String pr = sharedPreferences.getString("precison","2");
-        precision = Integer.parseInt(pr);
+        precision = sharedPreferences.getInt("precision",2);
     }
 
     private void addListenerOnSpinnerDimensionSelection() {

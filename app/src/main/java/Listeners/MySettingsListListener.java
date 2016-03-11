@@ -27,7 +27,7 @@ public class MySettingsListListener implements AdapterView.OnItemClickListener {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         selectedItem=st.getMainListAdapter().getItem(position).toString();
         if (selectedItem.equals("Result precision")){
-
+            st.showPrecisionDialog(st.getMainListView());
         }
         else if (selectedItem.equals("Keyboard")){
            st.showKeyboardDialog(st.getMainListView());

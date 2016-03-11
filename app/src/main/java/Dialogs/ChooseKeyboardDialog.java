@@ -22,6 +22,7 @@ import java.util.Arrays;
 public class ChooseKeyboardDialog extends DialogFragment {
     private SettingsActivity st;
     private ChooseKeyboardDialog this1;
+    private String kb;
     @Override
     public Dialog onCreateDialog(Bundle savedInstance){
         this1=this;
@@ -29,19 +30,29 @@ public class ChooseKeyboardDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(st);
         builder.setTitle("Choose Keyboard");
         final String [] pom1= getResources().getStringArray(R.array.keyboards);
+        kb = st.getKeyboard();
         //ArrayList<String> aL1 = new ArrayList<String>(Arrays.asList(pom1));
         //ArrayAdapter<String> aA1 = new ArrayAdapter<String> (getActivity(),android.R.layout.select_dialog_singlechoice,aL1);
-        builder.setSingleChoiceItems(pom1,-1, new DialogInterface.OnClickListener(){
+        int tmp = 0;
+        if (st.getKeyboard().equals("text"))
+            tmp = 1;
+        else if (st.getKeyboard().equals("phone"))
+            tmp = 0;
+        builder.setSingleChoiceItems(pom1,tmp, new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (pom1[which].equals("Text style")){
-                    st.getEditor().putString("keyboard","text"); // (String key, String value)
-                    st.getEditor().commit();
+                    if (st.getKeyboard().equals(kb)){
+                        st.setKeyboard("text");
+                        st.sendFlagTrue();
+                    }
                     this1.dismiss();
                 }
                 else if (pom1[which].equals("Phone style")){
-                    st.getEditor().putString("keyboard","phone"); // (String key, String value)
-                    st.getEditor().commit();
+                    if (st.getKeyboard().equals(kb)){
+                        st.setKeyboard("phone");
+                        st.sendFlagTrue();
+                    }
                     this1.dismiss();
                 }
 

@@ -155,10 +155,10 @@ public class LengthConverter extends AbstractConverter {
         else if (b.equals("Feet")){unit = "ft"; return (metersToFeet(value / mc.billion));}
         else if (b.equals("Miles")){ unit = "mi"; return (metersToMiles(value/mc.billion));}
         else if (b.equals("Meters")){unit = "m"; return (value/mc.billion);}
-        else if (b.equals("Centimeters")){unit = "cm"; return (value/mc.million*10.0);}
+        else if (b.equals("Centimeters")){unit = "cm"; return ((value/mc.million)/10.0);}
         else if (b.equals("Millimeters")){unit = "mm"; return (value/mc.million);}
-        else if (b.equals("Inches")){unit = "\""; return (centimetersToInches(value / mc.million * 10.0));}
-        else if (b.equals("Yards")){unit = "yd"; return (centimetersToYards(value/mc.million*10.0));}
+        else if (b.equals("Inches")){unit = "\""; return (centimetersToInches((value / mc.million )/ 10.0));}
+        else if (b.equals("Yards")){unit = "yd"; return (centimetersToYards((value/mc.million)/10.0));}
         else return 0;
     }
 

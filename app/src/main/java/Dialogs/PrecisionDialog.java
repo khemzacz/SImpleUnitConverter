@@ -38,10 +38,10 @@ public class PrecisionDialog extends DialogFragment {
         final TextView tx = (TextView) ll.findViewById(R.id.precisionTextView);
         Log.v("PrecisionDialog", "ok so far");
         tx.setText(Integer.toString(precision));
-        sk.setProgress(precision);
+        sk.setProgress((precision-2));
         sk.setMax(13);
         AlertDialog.Builder builder = new AlertDialog.Builder(st);
-        builder.setTitle("Precision for |n| > 10^8");
+        builder.setTitle("Set result precision");
         builder.setView((View)ll);
         sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 

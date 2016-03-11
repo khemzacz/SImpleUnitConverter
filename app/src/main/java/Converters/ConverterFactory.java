@@ -13,8 +13,8 @@ public class ConverterFactory {
         if (type.equals("Temperature")){
             return new TemperatureConverter(precision);
         }
-        else if (type.equals("Distance"))
-            return new DistanceConverter(precision);
+        else if (type.equals("Length"))
+            return new LengthConverter(precision);
         else if (type.equals("Mass"))
             return new MassConverter(precision);
         else if (type.equals("Speed"))

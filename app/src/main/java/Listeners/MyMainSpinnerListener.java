@@ -22,7 +22,7 @@ public class MyMainSpinnerListener implements AdapterView.OnItemSelectedListener
         if (chosenDimension.equals("Mass")) {
             m.getSpinner2().setAdapter(m.getAdapter1());
             m.getSpinner3().setAdapter(m.getAdapter1());
-        } else if (chosenDimension.equals("Distance")) {
+        } else if (chosenDimension.equals("Length")) {
             m.getSpinner2().setAdapter(m.getAdapter2());
             m.getSpinner3().setAdapter(m.getAdapter2());
         } else if (chosenDimension.equals("Temperature")) {

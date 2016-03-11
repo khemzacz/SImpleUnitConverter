@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         e1.setOnEditorActionListener(oEL);
         r1 = (TextView) findViewById(R.id.textView2);
         pom1 = getResources().getStringArray(R.array.mass_units); // takes Strings from XML and puts into table
-        pom2 = getResources().getStringArray(R.array.distance_units);
+        pom2 = getResources().getStringArray(R.array.length_units);
         pom3 = getResources().getStringArray(R.array.temperature_units);
         pom4 = getResources().getStringArray(R.array.speed_units);
         l1 = new ArrayList<String>(Arrays.asList(pom1));

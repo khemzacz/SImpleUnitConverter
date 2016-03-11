@@ -6,7 +6,7 @@
     <string name="target_unit_prompt">Target unit</string>
 
     <string-array name="dimensions">
-        <item>Distance</item>
+        <item>Length</item>
         <item>Speed</item>
         <item>Temperature</item>
         <item>Mass</item>
@@ -25,10 +25,16 @@
         <item>knots</item>
     </string-array>
 
-    <string-array name="distance_units">
+    <string-array name="length_units">
+        <item>Nanometers</item>
+        <item>Millimeters</item>
+        <item>Centimeters</item>
+        <item>Inches</item>
+        <item>Feet</item>
+        <item>Yards</item>
+        <item>Meters</item>
         <item>Kilometers</item>
         <item>Miles</item>
-        <item>Feet</item>
     </string-array>
 
     <string-array name="temperature_units">

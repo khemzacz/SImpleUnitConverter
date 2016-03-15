@@ -34,9 +34,15 @@ public class MainActivity extends ActionBarActivity {
     private MyOnEditorListener oEL;
     private EditText e1;
     private TextView r1;
-    private String[] pom1, pom2, pom3, pom4;
-    private ArrayList<String> l1, l2, l3, l4;
-    private ArrayAdapter<String> adapter1, adapter2, adapter3, adapter4;
+    private String[] pom1, pom2, pom3, pom4, pom5;
+    private ArrayAdapter<String> adapter1;
+    private ArrayAdapter<String> adapter2;
+    private ArrayAdapter<String> adapter3;
+    private ArrayAdapter<String> adapter4;
+
+
+
+    private ArrayAdapter<String> adapter5;
     private int precision;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         spinner1 = (Spinner) findViewById(R.id.spinner);
-        spinner2 =  (Spinner) findViewById(R.id.spinner2);
+        spinner2 = (Spinner) findViewById(R.id.spinner2);
         spinner3 = (Spinner) findViewById(R.id.spinner3);
         e1 = (EditText) findViewById(R.id.editText);
         oEL = new MyOnEditorListener(this);
@@ -56,17 +62,15 @@ public class MainActivity extends ActionBarActivity {
         pom2 = getResources().getStringArray(R.array.length_units);
         pom3 = getResources().getStringArray(R.array.temperature_units);
         pom4 = getResources().getStringArray(R.array.speed_units);
-        l1 = new ArrayList<String>(Arrays.asList(pom1));
-        l2 = new ArrayList<String>(Arrays.asList(pom2));
-        l3 = new ArrayList<String>(Arrays.asList(pom3));
-        l4 = new ArrayList<String>(Arrays.asList(pom4));
-        adapter1 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l1);
-        adapter2 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l2);
-        adapter3 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l3);
-        adapter4 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, l4);
+        pom5 = getResources().getStringArray(R.array.power_units);
+        adapter1 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom1)));
+        adapter2 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom2)));
+        adapter3 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom3)));
+        adapter4 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom4)));
+        adapter5 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom5)));
+        pom1 = null; pom2 = null; pom3=null;pom4=null;pom5=null;
+        System.gc();
         addListenerOnSpinnerDimensionSelection();
-
-
 
     }
 
@@ -171,6 +175,10 @@ public class MainActivity extends ActionBarActivity {
 
     public ArrayAdapter<String> getAdapter4() {
         return adapter4;
+    }
+
+    public ArrayAdapter<String> getAdapter5() {
+        return adapter5;
     }
 
     public Spinner getSpinner1(){return spinner1;}

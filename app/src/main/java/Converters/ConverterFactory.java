@@ -19,7 +19,8 @@ public class ConverterFactory {
             return new MassConverter(precision);
         else if (type.equals("Speed"))
             return new SpeedConverter(precision);
-
+        else if (type.equals("Power"))
+            return new PowerConverter(precision);
         return null;
     }
 }

@@ -11,12 +11,25 @@
         <item>Temperature</item>
         <item>Mass</item>
         <item>Power</item>
+        <item>Currencies</item>
     </string-array>
 
     <string-array name="mass_units">
         <item>Kilograms</item>
         <item>Pounds</item>
         <item>Ounces</item>
+    </string-array>
+
+    <string-array name="currency_units">
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>PLN</item>
+        <item>RUB</item>
+        <item>USD</item>
     </string-array>
 
     <string-array name="speed_units">
@@ -57,6 +70,7 @@
     <string-array name="settingsList">
         <item>Result precision</item>
         <item>Keyboard</item>
+        <item>Currency details</item>
     </string-array>
 
     <string-array name="keyboards">

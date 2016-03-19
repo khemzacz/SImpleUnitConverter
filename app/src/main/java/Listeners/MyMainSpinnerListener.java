@@ -19,6 +19,7 @@ public class MyMainSpinnerListener implements AdapterView.OnItemSelectedListener
         m.getAdapter3().setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         m.getAdapter4().setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         m.getAdapter5().setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        m.getAdapter6().setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chosenDimension = m.getSpinner1().getSelectedItem().toString();
         if (chosenDimension.equals("Mass")) {
             m.getSpinner2().setAdapter(m.getAdapter1());
@@ -35,6 +36,9 @@ public class MyMainSpinnerListener implements AdapterView.OnItemSelectedListener
         } else if (chosenDimension.equals("Power")) {
             m.getSpinner2().setAdapter(m.getAdapter5());
             m.getSpinner3().setAdapter(m.getAdapter5());
+        } else if (chosenDimension.equals("Currencies")){
+            m.getSpinner2().setAdapter(m.getAdapter6());
+            m.getSpinner3().setAdapter(m.getAdapter6());
         }
     }
 

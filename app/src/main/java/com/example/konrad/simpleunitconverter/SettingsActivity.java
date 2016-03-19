@@ -74,6 +74,10 @@ public class SettingsActivity extends ActionBarActivity {
         d1.show(getFragmentManager(), "PrecisionDialog");
     }
 
+    public void showCurrencyDetailsDialog(View v){
+
+    }
+
     public void sendSettings(){
         editor.putInt("precision", precision);
         editor.putString("keyboard",keyboard);

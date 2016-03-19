@@ -1,11 +1,15 @@
 package Converters;
 
+import android.content.SharedPreferences;
+
 /**
  * Created by Konrad on 3/5/2016.
  */
 public class ConverterFactory {
     private int precision;
-    public ConverterFactory(int p){
+    private SharedPreferences sp;
+    public ConverterFactory(int p, SharedPreferences sp){
+        this.sp = sp;
         this.precision=p;
     }
 
@@ -21,6 +25,8 @@ public class ConverterFactory {
             return new SpeedConverter(precision);
         else if (type.equals("Power"))
             return new PowerConverter(precision);
+        else if (type.equals("Currencies"))
+            return new CurrencyConverter(precision,sp);
         return null;
     }
 }

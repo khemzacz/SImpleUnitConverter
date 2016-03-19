@@ -32,5 +32,8 @@ public class MySettingsListListener implements AdapterView.OnItemClickListener {
         else if (selectedItem.equals("Keyboard")){
            st.showKeyboardDialog(st.getMainListView());
         }
+        else if (selectedItem.equals("Currency details")){
+
+        }
     }
 }

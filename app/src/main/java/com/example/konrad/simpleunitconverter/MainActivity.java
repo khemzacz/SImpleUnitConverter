@@ -38,15 +38,13 @@ public class MainActivity extends ActionBarActivity {
     private MyOnEditorListener oEL;
     private EditText e1;
     private TextView r1;
-    private String[] pom1, pom2, pom3, pom4, pom5;
+    private String[] pom1, pom2, pom3, pom4, pom5, pom6;
     private ArrayAdapter<String> adapter1;
     private ArrayAdapter<String> adapter2;
     private ArrayAdapter<String> adapter3;
     private ArrayAdapter<String> adapter4;
-
-
-
     private ArrayAdapter<String> adapter5;
+    private ArrayAdapter<String> adapter6;
     private int precision;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +65,13 @@ public class MainActivity extends ActionBarActivity {
         pom3 = getResources().getStringArray(R.array.temperature_units);
         pom4 = getResources().getStringArray(R.array.speed_units);
         pom5 = getResources().getStringArray(R.array.power_units);
+        pom6 = getResources().getStringArray(R.array.currency_units);
         adapter1 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom1)));
         adapter2 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom2)));
         adapter3 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom3)));
         adapter4 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom4)));
         adapter5 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom5)));
+        adapter6 = new ArrayAdapter<String>(this1, android.R.layout.simple_spinner_item, new ArrayList<String>(Arrays.asList(pom6)));
         pom1 = null; pom2 = null; pom3=null;pom4=null;pom5=null;
         System.gc();
         addListenerOnSpinnerDimensionSelection();
@@ -133,7 +133,7 @@ public class MainActivity extends ActionBarActivity {
         String txt2=spinner3.getSelectedItem().toString();
         try {
             String a = this.e1.getText().toString();
-            ConverterFactory cf1 = new ConverterFactory(precision);
+            ConverterFactory cf1 = new ConverterFactory(precision, currencyPreferences);
             AbstractConverter c1 = cf1.createConverter(txt0);
             String nt = c1.convert(a,txt1,txt2);
             r1.setText(nt);
@@ -183,9 +183,7 @@ public class MainActivity extends ActionBarActivity {
 
     public ArrayAdapter<String> getAdapter1(){return adapter1;}
 
-    public ArrayAdapter<String> getAdapter2() {
-        return adapter2;
-    }
+    public ArrayAdapter<String> getAdapter2() {return adapter2; }
 
     public ArrayAdapter<String> getAdapter3() {
         return adapter3;
@@ -197,6 +195,9 @@ public class MainActivity extends ActionBarActivity {
 
     public ArrayAdapter<String> getAdapter5() {
         return adapter5;
+    }
+    public ArrayAdapter<String> getAdapter6() {
+        return adapter6;
     }
 
     public Spinner getSpinner1(){return spinner1;}

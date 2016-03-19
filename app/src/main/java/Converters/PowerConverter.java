@@ -3,6 +3,8 @@ package Converters;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import StaticUtilities.mc;
+
 /**
  * Created by Konrad on 15/03/2016.
  */
@@ -88,7 +90,7 @@ public class PowerConverter extends AbstractConverter{
     }
 
     private double gigawatstsToWatts(double value) {
-        return value*mc.billion;
+        return value* mc.billion;
     }
 
     private double megawatts(String b) {

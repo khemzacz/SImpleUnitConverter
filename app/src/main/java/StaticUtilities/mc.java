@@ -1,4 +1,4 @@
-package Converters;
+package StaticUtilities;
 
 /**
  * Created by Konrad on 3/11/2016.

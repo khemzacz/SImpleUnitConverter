@@ -18,9 +18,11 @@ import android.widget.TextView;
 
 import Converters.AbstractConverter;
 import Converters.ConverterFactory;
+import Dialogs.UpdateCurrenciesDialog;
 import Listeners.MyMainSpinnerListener;
 import Listeners.MyTextWatcher;
 import Listeners.MyOnEditorListener;
+import StaticUtilities.CurrencyValueManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,9 +30,11 @@ import java.util.Arrays;
 public class MainActivity extends ActionBarActivity {
     final private MainActivity this1= this;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences currencyPreferences;
     private Intent settingsIntent;
     private Spinner spinner1, spinner2, spinner3;
     //private MyTextWatcher watcher1;
+    private boolean firstLaunch;
     private MyOnEditorListener oEL;
     private EditText e1;
     private TextView r1;
@@ -71,7 +75,12 @@ public class MainActivity extends ActionBarActivity {
         pom1 = null; pom2 = null; pom3=null;pom4=null;pom5=null;
         System.gc();
         addListenerOnSpinnerDimensionSelection();
-
+        if (firstLaunch){
+            UpdateCurrenciesDialog dl = new UpdateCurrenciesDialog();
+            dl.show(getFragmentManager(),"update dialog");
+        }
+        sharedPreferences.edit().putBoolean("firstLaunch",false);
+        sharedPreferences.edit().commit();
     }
 
     @Override
@@ -101,6 +110,11 @@ public class MainActivity extends ActionBarActivity {
         }
 
         precision = sharedPreferences.getInt("precision",2);
+        firstLaunch = sharedPreferences.getBoolean("firstLaunch", true);
+
+
+        currencyPreferences = getSharedPreferences("Currencies", Context.MODE_PRIVATE);
+        CurrencyValueManager.setInitialValues(currencyPreferences);
     }
 
     private void addListenerOnSpinnerDimensionSelection() {
@@ -148,6 +162,13 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    public void getCurrencyJSON(){
+
+
+    }
+
+
     public EditText getE1(){
         return e1;
     }
@@ -184,4 +205,7 @@ public class MainActivity extends ActionBarActivity {
     public Spinner getSpinner1(){return spinner1;}
     public Spinner getSpinner2(){return spinner2;}
     public Spinner getSpinner3(){return spinner3;}
+    public SharedPreferences getCurrencyPreferences() {
+        return currencyPreferences;
+    }
 }

@@ -1,9 +1,9 @@
 package Converters;
 
-import android.util.Log;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import StaticUtilities.mc;
 
 /**
  * Created by Konrad on 3/5/2016.
@@ -57,7 +57,7 @@ public class LengthConverter extends AbstractConverter {
     private double kilometers(String b){
         if (b.equals("Miles")){ unit = "mi"; return kilometersToMiles(value); }
         else if (b.equals("Feet")){ unit = "ft"; return kilometersToFeet(value); }
-        else if (b.equals("Meters")){  unit = "m"; return (value*mc.thousand);}
+        else if (b.equals("Meters")){  unit = "m"; return (value* mc.thousand);}
         else if (b.equals("Centimeters")){unit = "cm"; return (value*mc.hundredThousand);}
         else if (b.equals("Millimeters")){unit = "mm"; return (value*mc.million);}
         else if (b.equals("Inches")){unit = "\""; return ((value*mc.hundredThousand)/2.54); }

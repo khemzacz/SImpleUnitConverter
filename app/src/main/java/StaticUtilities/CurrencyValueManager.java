@@ -1,5 +1,6 @@
 package StaticUtilities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -42,9 +43,9 @@ public final class CurrencyValueManager {
 
     }
 
-    public static void updateValuesViaInternet(MainActivity mac, SharedPreferences sp){
+    public static void updateValuesViaInternet(Activity mac, SharedPreferences sp){
         //Log.v("CurrencyManager", "1st line of update function");
-        final MainActivity mac1 = mac;
+        final Activity mac1 = mac;
         final SharedPreferences sp1 = sp;
         RequestQueue queue = Volley.newRequestQueue(mac);
         String url = sp.getString("URL","http://api.fixer.io/latest");

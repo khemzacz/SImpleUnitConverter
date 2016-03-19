@@ -1,5 +1,6 @@
 package com.example.konrad.simpleunitconverter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,11 +15,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Dialogs.ChooseKeyboardDialog;
+import Dialogs.CurrencyDetailsDialog;
 import Dialogs.PrecisionDialog;
 import Listeners.MySettingsListListener;
 
 public class SettingsActivity extends ActionBarActivity {
     private SharedPreferences sharedPreferences;
+    private SharedPreferences currencyPreferences;
     private SharedPreferences.Editor editor;
     private Intent thisIntent;
     private Bundle thisBundle;
@@ -43,7 +46,7 @@ public class SettingsActivity extends ActionBarActivity {
         sendFlag= false;
         setContentView(R.layout.activity_settings);
         mainListView= (ListView) findViewById(R.id.listView1);
-
+        currencyPreferences = getSharedPreferences("Currencies", Context.MODE_PRIVATE);
         String [] pom1 = getResources().getStringArray(R.array.settingsList);
         mainList = new ArrayList<String>(Arrays.asList(pom1));
         mainListAdapter = new ArrayAdapter<String> (this1, android.R.layout.simple_selectable_list_item,mainList);
@@ -75,7 +78,8 @@ public class SettingsActivity extends ActionBarActivity {
     }
 
     public void showCurrencyDetailsDialog(View v){
-
+        CurrencyDetailsDialog dl = new CurrencyDetailsDialog();
+        dl.show(getFragmentManager(), "CurrencyDialog");
     }
 
     public void sendSettings(){
@@ -128,5 +132,8 @@ public class SettingsActivity extends ActionBarActivity {
 
     public String getKeyboard() {
         return keyboard;
+    }
+    public SharedPreferences getCurrencyPreferences() {
+        return currencyPreferences;
     }
 }

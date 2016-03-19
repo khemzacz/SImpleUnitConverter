@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Do You want to download up-to-date currency values? (Requires Internet Connection)"
-        android:id="@+id/precisionTextView"
+        android:id="@+id/currencyTextView"
         android:layout_gravity="center_horizontal" />
 
 

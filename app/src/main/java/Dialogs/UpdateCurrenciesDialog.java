@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.konrad.simpleunitconverter.MainActivity;
@@ -29,6 +30,7 @@ public class UpdateCurrenciesDialog extends DialogFragment {
         LinearLayout ll = (LinearLayout) lf.inflate(R.layout.my_update_layout, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(ac);
         builder.setTitle("Current rates: " + ac.getCurrencyPreferences().getString("Date", "error getting rates"));
+        builder.setView((View)ll);
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

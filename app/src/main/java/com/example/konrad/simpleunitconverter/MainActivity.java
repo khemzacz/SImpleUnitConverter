@@ -79,8 +79,9 @@ public class MainActivity extends ActionBarActivity {
             UpdateCurrenciesDialog dl = new UpdateCurrenciesDialog();
             dl.show(getFragmentManager(),"update dialog");
         }
-        sharedPreferences.edit().putBoolean("firstLaunch",false);
-        sharedPreferences.edit().commit();
+        SharedPreferences.Editor editor =   sharedPreferences.edit();
+        editor.putBoolean("firstLaunch",false);
+        editor.commit();
     }
 
     @Override
@@ -155,19 +156,15 @@ public class MainActivity extends ActionBarActivity {
             startActivity(settingsIntent);
             return true;
         }
+        if(id == R.id.action_update_rates){
+            CurrencyValueManager.updateValuesViaInternet(this1, getCurrencyPreferences());
+        }
         if (id == R.id.action_exit) {
             finish();
             System.exit(0);
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-    public void getCurrencyJSON(){
-
-
-    }
-
 
     public EditText getE1(){
         return e1;

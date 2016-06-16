@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import Converters.AbstractConverter;
 import Converters.ConverterFactory;
+import Dialogs.AboutDialog;
 import Dialogs.UpdateCurrenciesDialog;
 import Listeners.MyMainSpinnerListener;
 import Listeners.MyTextWatcher;
@@ -158,6 +159,10 @@ public class MainActivity extends ActionBarActivity {
         }
         if(id == R.id.action_update_rates){
             CurrencyValueManager.updateValuesViaInternet(this1, getCurrencyPreferences());
+        }
+        if(id== R.id.action_about){
+            AboutDialog d = new AboutDialog();
+            d.show(getFragmentManager(),"About dialog");
         }
         if (id == R.id.action_exit) {
             finish();

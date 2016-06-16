@@ -1,0 +1,27 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch second
+# Your branch is up-to-date with 'origin/second'.
+#
+# Changes to be committed:
+#	deleted:    .idea/libraries/appcompat_v7_19_1_0.xml
+#	deleted:    .idea/libraries/support_v4_19_1_0.xml
+#
+# Changes not staged for commit:
+#	modified:   .gradle/2.8/taskArtifacts/cache.properties.lock
+#	modified:   .gradle/2.8/taskArtifacts/fileHashes.bin
+#	modified:   .gradle/2.8/taskArtifacts/fileSnapshots.bin
+#	modified:   .gradle/2.8/taskArtifacts/outputFileStates.bin
+#	modified:   .gradle/2.8/taskArtifacts/taskArtifacts.bin
+#	modified:   .idea/workspace.xml
+#	modified:   app/src/main/java/com/example/konrad/simpleunitconverter/MainActivity.java
+#	modified:   app/src/main/res/layout/activity_main.xml
+#
+# Untracked files:
+#	.idea/libraries/
+#	app/src/main/java/com/example/konrad/simpleunitconverter/myOnEditorListener.java
+#	emohr5o2.bd0.txt
+#	skatjske.2dl.txt
+#
+

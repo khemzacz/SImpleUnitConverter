@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UnitConverterBetaV0.9</string>
+    <string name="app_name">SImpleUnitConverter1.0</string>
     <string name="action_settings">Settings</string>
     <string name="dimensions_prompt">Choose a dimension</string>
     <string name="reference_unit_prompt">Reference unit</string>

@@ -28,6 +28,9 @@ public final class CurrencyValueManager {
 
 
     public static void setInitialValues(SharedPreferences sp){
+        if (sp.contains("Date")){
+            return;
+        }
         editor = sp.edit();
         editor.putString("URL", "http://api.fixer.io/latest");
         editor.putString("Date","2016-03-18");

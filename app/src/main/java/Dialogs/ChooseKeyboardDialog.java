@@ -5,16 +5,10 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.InputType;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.example.konrad.simpleunitconverter.R;
 import com.example.konrad.simpleunitconverter.SettingsActivity;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Konrad on 3/10/2016.

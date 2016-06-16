@@ -1,0 +1,17 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch second
+# Changes to be committed:
+#	new file:   .idea/libraries/appcompat_v7_19_1_0.xml
+#	new file:   .idea/libraries/support_v4_19_1_0.xml
+#	new file:   .idea/workspace.xml
+#
+# Untracked files:
+#	.gradle/
+#	SImpleUnitConverter2.iml
+#	app/app.iml
+#	app/src/main/java/com/example/konrad/simpleunitconverter/SpeedConverter.java
+#	local.properties
+#
+test
